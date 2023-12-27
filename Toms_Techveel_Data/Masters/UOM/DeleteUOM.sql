@@ -1,0 +1,1 @@
+delete from  TblUomMst where UomID=@UomID

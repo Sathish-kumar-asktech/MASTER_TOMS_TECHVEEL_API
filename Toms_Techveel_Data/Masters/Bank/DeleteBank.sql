@@ -1,0 +1,1 @@
+delete from  TblBankMst where Bankid=@Bankid

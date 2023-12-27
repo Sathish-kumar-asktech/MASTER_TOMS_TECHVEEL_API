@@ -1,0 +1,1 @@
+delete from  TblPurchaseInvoice where PurchaseInvoiceID=@PurchaseInvoiceID

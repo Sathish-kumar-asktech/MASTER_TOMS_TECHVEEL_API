@@ -1,0 +1,1 @@
+delete from  TblProductCategory where ProductCategoryid=@ProductCategoryid

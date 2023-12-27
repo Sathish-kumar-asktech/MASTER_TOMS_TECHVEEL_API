@@ -1,0 +1,1 @@
+delete from  TblSupplierMst where Supplierid=@Supplierid

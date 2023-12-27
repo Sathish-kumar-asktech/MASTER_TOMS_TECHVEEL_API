@@ -1,0 +1,1 @@
+delete from  TblCustomerMst where Customerid=@Customerid

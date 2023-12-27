@@ -1,0 +1,1 @@
+delete from  TblCompanyMst where CompanyId=@CompanyId
