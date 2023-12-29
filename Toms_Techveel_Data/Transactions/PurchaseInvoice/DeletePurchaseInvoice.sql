@@ -1,1 +1,3 @@
-delete from  TblPurchaseInvoice where PurchaseInvoiceID=@PurchaseInvoiceID
+Delete from  TblPurchaseDetails where PurchaseInvoiceID=@PurchaseInvoiceID
+Delete from  TblPurchaseInvoice where PurchaseInvoiceID=@PurchaseInvoiceID
+

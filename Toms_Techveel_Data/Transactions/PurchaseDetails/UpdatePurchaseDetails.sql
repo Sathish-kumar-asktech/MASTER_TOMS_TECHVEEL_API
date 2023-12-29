@@ -18,6 +18,7 @@ set
   ProductDetailId = @ProductDetailId,
   PurchaseInvoiceID=@PurchaseInvoiceID,
   Quantity=@Quantity,
+  Rate=@Rate,
   Discount=@Discount,
   netAmount=@netAmount,
   ModifyBy = @ModifyBy,

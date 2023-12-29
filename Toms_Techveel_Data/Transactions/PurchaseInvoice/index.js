@@ -9,7 +9,7 @@ const InsertPurchaseInvoice = async (PurchaseInvoiceData) => {
     const sqlQueries = await utils.loadSqlQueries("Transactions/PurchaseInvoice");
     const insertEvent = await pool
       .request()      
-      .input("InvoiceNumber", sql.BigInt, PurchaseInvoiceData.InvoiceNumber)
+      // .input("InvoiceNumber", sql.BigInt, PurchaseInvoiceData.InvoiceNumber)
       .input("InvoiceDate", sql.SmallDateTime, PurchaseInvoiceData.InvoiceDate) 
       .input("PINumber", sql.BigInt, PurchaseInvoiceData.PINumber)
       .input("PIDate", sql.SmallDateTime, PurchaseInvoiceData.PIDate)
@@ -58,7 +58,7 @@ const UpdatePurchaseInvoice = async (PurchaseInvoiceID, PurchaseInvoiceData) => 
     const UpdateEvent = await pool
       .request()
       .input("PurchaseInvoiceID", sql.BigInt, PurchaseInvoiceID)  
-      .input("InvoiceNumber", sql.BigInt, PurchaseInvoiceData.InvoiceNumber)
+      // .input("InvoiceNumber", sql.BigInt, PurchaseInvoiceData.InvoiceNumber)
       .input("InvoiceDate", sql.SmallDateTime, PurchaseInvoiceData.InvoiceDate) 
       .input("PINumber", sql.BigInt, PurchaseInvoiceData.PINumber)
       .input("PIDate", sql.SmallDateTime, PurchaseInvoiceData.PIDate)

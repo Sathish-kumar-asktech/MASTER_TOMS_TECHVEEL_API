@@ -1,18 +1,9 @@
-If Exists(
-  Select
-   ProductDetailId
-  From
-    TblPurchaseDetails
-  Where
-    PurchaseDetailsID = @PurchaseDetailsID
-) Begin Raiserror(50001, 16, 3) Return
-End
-else begin
 insert into
   TblPurchaseDetails(
     ProductDetailId,
     PurchaseInvoiceID,
     Quantity,
+    Rate,
     Discount,
     netAmount,    
     CreatedBy, 
@@ -22,13 +13,12 @@ Values
   (
     @ProductDetailId,
     @PurchaseInvoiceID,
-    @ProductCategoryid,
     @Quantity,
+    @Rate,
+    @Discount,
     @netAmount,
-    @ActiveStatus,
     @CreatedBy, 
     GETDATE()
     )
 SELECT
   SCOPE_IDENTITY() AS PurchaseDetailsID
-End

@@ -12,6 +12,7 @@ const InsertPurchaseDetails = async (PurchaseDetailsData) => {
       .input("ProductDetailId", sql.BigInt, PurchaseDetailsData.ProductDetailId)   
       .input("PurchaseInvoiceID", sql.BigInt, PurchaseDetailsData.PurchaseInvoiceID)   
       .input("Quantity", sql.BigInt, PurchaseDetailsData.Quantity)   
+      .input("Rate", sql.BigInt, PurchaseDetailsData.Rate)   
       .input("Discount", sql.BigInt, PurchaseDetailsData.Discount)   
       .input("netAmount", sql.BigInt, PurchaseDetailsData.netAmount)   
       .input("CreatedBy", sql.BigInt, PurchaseDetailsData.CreatedBy)
@@ -33,13 +34,13 @@ const GetAllPurchaseDetails = async () => {
   }
 };
 
-const GetOnePurchaseDetails = async (PurchaseDetailsID) => {
+const GetOnePurchaseDetails = async (PurchaseInvoiceID) => {
   try {
     let pool = await sql.connect(config.sql);
     const sqlQueries = await utils.loadSqlQueries("Transactions/PurchaseDetails");
     const GetonePurchaseDetails = await pool
       .request()
-      .input("PurchaseDetailsID", sql.BigInt, PurchaseDetailsID)
+      .input("PurchaseInvoiceID", sql.BigInt, PurchaseInvoiceID)
       .query(sqlQueries.GetOnePurchaseDetails);
     return GetonePurchaseDetails.recordset;
   } catch (error) {
@@ -57,6 +58,7 @@ const UpdatePurchaseDetails = async (PurchaseDetailsID, PurchaseDetailsData) => 
       .input("ProductDetailId", sql.BigInt, PurchaseDetailsData.ProductDetailId)   
       .input("PurchaseInvoiceID", sql.BigInt, PurchaseDetailsData.PurchaseInvoiceID)   
       .input("Quantity", sql.BigInt, PurchaseDetailsData.Quantity)   
+      .input("Rate", sql.BigInt, PurchaseDetailsData.Rate)   
       .input("Discount", sql.BigInt, PurchaseDetailsData.Discount)   
       .input("netAmount", sql.BigInt, PurchaseDetailsData.netAmount)
       .input("ModifyBy", sql.BigInt, PurchaseDetailsData.ModifyBy)
@@ -67,13 +69,13 @@ const UpdatePurchaseDetails = async (PurchaseDetailsID, PurchaseDetailsData) => 
   }
 };
 
-const DeletePurchaseDetails = async (PurchaseDetailsID) => {
+const DeletePurchaseDetails = async (PurchaseInvoiceID) => {
   try {
     let pool = await sql.connect(config.sql);
     const sqlQueries = await utils.loadSqlQueries("Transactions/PurchaseDetails");
     const deleteEvent = await pool
       .request()
-      .input("PurchaseDetailsID", sql.BigInt, PurchaseDetailsID)
+      .input("PurchaseInvoiceID", sql.BigInt, PurchaseInvoiceID)
       .query(sqlQueries.DeletePurchaseDetails);
     return deleteEvent.recordset;
   } catch (error) {

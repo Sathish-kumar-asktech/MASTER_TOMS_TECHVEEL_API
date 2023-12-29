@@ -4,11 +4,11 @@ td.PurchaseDetailsID,
 td.PurchaseInvoiceID,
 td.ProductDetailId,
 td.Quantity,
+td.Rate,
 td.Discount,
 td.netAmount,
 tpd.ProductDescription,
 tpd.ProductCategoryid,
-tpd.Rate,
 tpd.UomID,
 tu.UOM,
 tpc.InvoiceNumber, 
@@ -21,8 +21,8 @@ TblPurchaseInvoice as tpc on td.PurchaseInvoiceID = tpc.PurchaseInvoiceID
 left join 
 TblProductDescription as tpd on td.ProductDetailId = tpd.ProductDetailId 
 left join 
-TblUomMst as tu on td.UomID = tu.UomID  
+TblUomMst as tu on tpd.UomID = tu.UomID  
 left join 
 TblProductCategory as pct on tpd.ProductCategoryid = pct.ProductCategoryid 
  
-where PurchaseDetailsID=@PurchaseDetailsID
+order by td.PurchaseDetailsID desc

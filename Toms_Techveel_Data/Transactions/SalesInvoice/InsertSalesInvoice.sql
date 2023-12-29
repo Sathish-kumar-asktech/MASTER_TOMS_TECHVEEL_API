@@ -2,20 +2,20 @@
 --   Select
 --    InvoiceNumber
 --   From
---     TblPurchaseInvoice
+--     TblSalesInvoice
 --   Where
---     PurchaseInvoiceID = @PurchaseInvoiceID
+--     SalesInvoiceID = @SalesInvoiceID
 -- ) Begin Raiserror(50001, 16, 3) 
 -- Return
 -- End
 -- else 
 -- begin
 insert into
-  TblPurchaseInvoice(
+  TblSalesInvoice(
     InvoiceNumber,
     InvoiceDate,
-    PINumber,
-    PIDate,
+    PoRefNumber,
+    PoRefDate,
     Supplierid,
     TotalAmount,
     Discount,
@@ -26,10 +26,10 @@ insert into
     )
 Values
   (
-  (SELECT COALESCE(Max(InvoiceNumber), 0) + 1 FROM TblPurchaseInvoice),
+  (SELECT COALESCE(Max(InvoiceNumber), 0) + 1 FROM TblSalesInvoice),
   @InvoiceDate,
-  @PINumber,
-  @PIDate,
+  @PoRefNumber,
+  @PoRefDate,
   @Supplierid,
   @TotalAmount, 
   @Discount,
@@ -39,5 +39,5 @@ Values
   GETDATE()
   )
 SELECT
-  SCOPE_IDENTITY() AS PurchaseInvoiceID
+  SCOPE_IDENTITY() AS SalesInvoiceID
 -- End

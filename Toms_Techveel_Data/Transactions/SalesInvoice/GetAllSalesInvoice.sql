@@ -1,10 +1,10 @@
 select 
-ROW_NUMBER() over(order by td.PurchaseInvoiceID desc) as SNo,
-td.PurchaseInvoiceID,
+ROW_NUMBER() over(order by td.SalesInvoiceID desc) as SNo,
+td.SalesInvoiceID,
 td.InvoiceNumber,
 td.InvoiceDate,
-td.PINumber,
-td.PIDate,
+td.PoRefNumber,
+td.PoRefDate,
 td.TotalAmount,
 td.Discount,
 td.netAmount,
@@ -12,7 +12,7 @@ td.Remarks,
 td.Supplierid,
 tsm.SupplierName
 from 
-TblPurchaseInvoice as td 
+TblSalesInvoice as td 
 left join 
 TblSupplierMst as tsm on td.Supplierid = tsm.Supplierid 
-order by td.PurchaseInvoiceID desc
+order by td.SalesInvoiceID desc

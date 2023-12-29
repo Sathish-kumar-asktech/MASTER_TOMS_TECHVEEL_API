@@ -1,10 +1,10 @@
 Update
-  TblPurchaseInvoice
+  TblSalesInvoice
 set
   -- InvoiceNumber = @InvoiceNumber,
   InvoiceDate=@InvoiceDate,
-  PINumber = @PINumber,
-  PIDate=@PIDate,
+  PoRefNumber = @PoRefNumber,
+  PoRefDate=@PoRefDate,
   Supplierid=@Supplierid,
   TotalAmount=@TotalAmount,
   Discount=@Discount, 
@@ -13,4 +13,4 @@ set
   ModifyBy = @ModifyBy,
   ModifyDate = GETDATE()
 where
-  PurchaseInvoiceID = @PurchaseInvoiceID
+  SalesInvoiceID = @SalesInvoiceID
