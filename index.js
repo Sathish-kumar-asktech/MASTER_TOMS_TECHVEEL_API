@@ -17,13 +17,14 @@ const SupplierRoute = require("./Toms_Techveel_Route/MasterRoute/SupplierRoute")
 const CompanyRoute = require("./Toms_Techveel_Route/MasterRoute/CompanyRoute");
 const LocationRoute = require("./Toms_Techveel_Route/MasterRoute/LocationRoute");
 
-
 //Transactions
 const PurchaseDetailsRoute = require("./Toms_Techveel_Route/TransactionRoute/PurchaseDetailsRoute");
 const PurchaseInvoiceRoute = require("./Toms_Techveel_Route/TransactionRoute/PurchaseInvoiceRoute");
 const SalesDetailsRoute = require("./Toms_Techveel_Route/TransactionRoute/SalesDetailsRoute");
 const SalesInvoiceRoute = require("./Toms_Techveel_Route/TransactionRoute/SalesInvoiceRoute");
 
+//MIS Reports
+const StockReportRoute = require("./Toms_Techveel_Route/MISRoute/StockReportRoute");
 
 const app = express();
 app.use(cors());
@@ -47,6 +48,9 @@ app.use("/api", PurchaseDetailsRoute.Toms_Techveel_Route);
 app.use("/api", PurchaseInvoiceRoute.Toms_Techveel_Route);
 app.use("/api", SalesDetailsRoute.Toms_Techveel_Route);
 app.use("/api", SalesInvoiceRoute.Toms_Techveel_Route);
+
+//MIS
+app.use("/api", StockReportRoute.Toms_Techveel_Route);
 
 app.listen(config.port, () => {
   console.log("app listening on url http://localhost:" + config.port);

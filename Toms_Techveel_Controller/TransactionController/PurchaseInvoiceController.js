@@ -9,6 +9,16 @@ const GetAllPurchaseInvoice = async (req, res, next) => {
   }
 };
 
+
+const GetAllPurchaseInvoiceMIS = async (req, res, next) => {
+  try {
+    const PurchaseInvoicelist = await PurchaseInvoiceData.GetAllPurchaseInvoiceMIS();
+    res.send(PurchaseInvoicelist);
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+};
+
 const GetOnePurchaseInvoice = async (req, res, next) => {
   try {
     const PurchaseInvoiceid = req.params.id;
@@ -52,6 +62,7 @@ const DeletePurchaseInvoice = async (req, res, next) => {
 
 module.exports = {
   GetAllPurchaseInvoice: GetAllPurchaseInvoice,
+  GetAllPurchaseInvoiceMIS:GetAllPurchaseInvoiceMIS,
   GetOnePurchaseInvoice: GetOnePurchaseInvoice,
   InsertPurchaseInvoice: InsertPurchaseInvoice,
   UpdatePurchaseInvoice: UpdatePurchaseInvoice,

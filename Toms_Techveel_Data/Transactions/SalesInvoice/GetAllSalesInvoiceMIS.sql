@@ -1,7 +1,7 @@
 select
     ROW_NUMBER() over (
         order by
-            td.SalesInvoiceID desc
+            td.SalesInvoiceID
     ) as SNo,
     td.SalesInvoiceID,
     td.InvoiceNumber,
@@ -17,5 +17,3 @@ select
 from
     TblSalesInvoice as td
     left join TblCustomerMst as tsm on td.Customerid = tsm.Customerid
-order by
-    td.SalesInvoiceID desc

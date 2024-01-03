@@ -1,5 +1,5 @@
 select 
-ROW_NUMBER() over(order by td.SalesDetailsID desc) as SNo,
+ROW_NUMBER() over(order by td.SalesDetailsID ) as SNo,
 td.SalesDetailsID,
 td.SalesInvoiceID,
 td.ProductDetailId,
@@ -25,4 +25,4 @@ TblUomMst as tu on tpd.UomID = tu.UomID
 left join 
 TblProductCategory as pct on tpd.ProductCategoryid = pct.ProductCategoryid 
  
-where td.SalesInvoiceID=@SalesInvoiceID
+where td.SalesInvoiceID=@SalesInvoiceID  

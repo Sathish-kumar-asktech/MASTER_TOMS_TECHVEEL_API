@@ -1,5 +1,5 @@
 select 
-ROW_NUMBER() over(order by td.PurchaseDetailsID desc) as SNo,
+ROW_NUMBER() over(order by td.PurchaseDetailsID) as SNo,
 td.PurchaseDetailsID,
 td.PurchaseInvoiceID,
 td.ProductDetailId,

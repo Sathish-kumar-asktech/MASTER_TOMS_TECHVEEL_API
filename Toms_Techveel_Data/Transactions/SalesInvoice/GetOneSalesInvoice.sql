@@ -8,10 +8,10 @@ td.TotalAmount,
 td.Discount,
 td.netAmount,
 td.Remarks,
-td.Supplierid,
-tsm.SupplierName
+td.Customerid,
+tsm.CustomerName
 from 
 TblSalesInvoice as td 
 left join 
-TblSupplierMst as tsm on td.Supplierid = tsm.Supplierid  
+TblCustomerMst as tsm on td.Customerid = tsm.Customerid  
 where SalesInvoiceID=@SalesInvoiceID

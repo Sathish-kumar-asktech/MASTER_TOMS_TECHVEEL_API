@@ -24,6 +24,7 @@ function verifytoken(req, res, next) {
 }
 
 router.get("/GetAllPurchaseInvoice", verifytoken, PurchaseInvoiceController.GetAllPurchaseInvoice);
+router.get("/GetAllPurchaseInvoiceMIS", verifytoken, PurchaseInvoiceController.GetAllPurchaseInvoiceMIS);
 router.get("/GetOnePurchaseInvoice/:id", verifytoken, PurchaseInvoiceController.GetOnePurchaseInvoice);
 router.post("/InsertPurchaseInvoice", verifytoken, PurchaseInvoiceController.InsertPurchaseInvoice);
 router.put("/UpdatePurchaseInvoice/:id", verifytoken, PurchaseInvoiceController.UpdatePurchaseInvoice);

@@ -6,17 +6,19 @@ const sql = require("mssql");
 const InsertPurchaseInvoice = async (PurchaseInvoiceData) => {
   try {
     let pool = await sql.connect(config.sql);
-    const sqlQueries = await utils.loadSqlQueries("Transactions/PurchaseInvoice");
+    const sqlQueries = await utils.loadSqlQueries(
+      "Transactions/PurchaseInvoice"
+    );
     const insertEvent = await pool
-      .request()      
+      .request()
       // .input("InvoiceNumber", sql.BigInt, PurchaseInvoiceData.InvoiceNumber)
-      .input("InvoiceDate", sql.SmallDateTime, PurchaseInvoiceData.InvoiceDate) 
+      .input("InvoiceDate", sql.SmallDateTime, PurchaseInvoiceData.InvoiceDate)
       .input("PINumber", sql.BigInt, PurchaseInvoiceData.PINumber)
       .input("PIDate", sql.SmallDateTime, PurchaseInvoiceData.PIDate)
-      .input("Supplierid", sql.BigInt, PurchaseInvoiceData.Supplierid) 
-      .input("TotalAmount", sql.BigInt, PurchaseInvoiceData.TotalAmount) 
-      .input("Discount", sql.BigInt, PurchaseInvoiceData.Discount) 
-      .input("netAmount", sql.BigInt, PurchaseInvoiceData.netAmount)  
+      .input("Supplierid", sql.BigInt, PurchaseInvoiceData.Supplierid)
+      .input("TotalAmount", sql.BigInt, PurchaseInvoiceData.TotalAmount)
+      .input("Discount", sql.BigInt, PurchaseInvoiceData.Discount)
+      .input("netAmount", sql.BigInt, PurchaseInvoiceData.netAmount)
       .input("Remarks", sql.VarChar(2000), PurchaseInvoiceData.Remarks)
       .input("CreatedBy", sql.BigInt, PurchaseInvoiceData.CreatedBy)
       .query(sqlQueries.InsertPurchaseInvoice);
@@ -29,9 +31,30 @@ const InsertPurchaseInvoice = async (PurchaseInvoiceData) => {
 const GetAllPurchaseInvoice = async () => {
   try {
     let pool = await sql.connect(config.sql);
-    const sqlQueries = await utils.loadSqlQueries("Transactions/PurchaseInvoice");
-    const GetPurchaseInvoice = await pool.request().query(sqlQueries.GetAllPurchaseInvoice);
+    const sqlQueries = await utils.loadSqlQueries(
+      "Transactions/PurchaseInvoice"
+    );
+    const GetPurchaseInvoice = await pool
+      .request()
+      .query(sqlQueries.GetAllPurchaseInvoice);
     return GetPurchaseInvoice.recordset;
+  } catch (error) {
+    return error.message;
+  }
+};
+
+
+
+const GetAllPurchaseInvoiceMIS = async () => {
+  try {
+    let pool = await sql.connect(config.sql);
+    const sqlQueries = await utils.loadSqlQueries(
+      "Transactions/PurchaseInvoice"
+    );
+    const GetAllPurchaseInvoiceMIS = await pool
+      .request()
+      .query(sqlQueries.GetAllPurchaseInvoiceMIS);
+    return GetAllPurchaseInvoiceMIS.recordset;
   } catch (error) {
     return error.message;
   }
@@ -40,7 +63,9 @@ const GetAllPurchaseInvoice = async () => {
 const GetOnePurchaseInvoice = async (PurchaseInvoiceID) => {
   try {
     let pool = await sql.connect(config.sql);
-    const sqlQueries = await utils.loadSqlQueries("Transactions/PurchaseInvoice");
+    const sqlQueries = await utils.loadSqlQueries(
+      "Transactions/PurchaseInvoice"
+    );
     const GetonePurchaseInvoice = await pool
       .request()
       .input("PurchaseInvoiceID", sql.BigInt, PurchaseInvoiceID)
@@ -51,21 +76,26 @@ const GetOnePurchaseInvoice = async (PurchaseInvoiceID) => {
   }
 };
 
-const UpdatePurchaseInvoice = async (PurchaseInvoiceID, PurchaseInvoiceData) => {
+const UpdatePurchaseInvoice = async (
+  PurchaseInvoiceID,
+  PurchaseInvoiceData
+) => {
   try {
     let pool = await sql.connect(config.sql);
-    const sqlQueries = await utils.loadSqlQueries("Transactions/PurchaseInvoice");
+    const sqlQueries = await utils.loadSqlQueries(
+      "Transactions/PurchaseInvoice"
+    );
     const UpdateEvent = await pool
       .request()
-      .input("PurchaseInvoiceID", sql.BigInt, PurchaseInvoiceID)  
+      .input("PurchaseInvoiceID", sql.BigInt, PurchaseInvoiceID)
       // .input("InvoiceNumber", sql.BigInt, PurchaseInvoiceData.InvoiceNumber)
-      .input("InvoiceDate", sql.SmallDateTime, PurchaseInvoiceData.InvoiceDate) 
+      .input("InvoiceDate", sql.SmallDateTime, PurchaseInvoiceData.InvoiceDate)
       .input("PINumber", sql.BigInt, PurchaseInvoiceData.PINumber)
       .input("PIDate", sql.SmallDateTime, PurchaseInvoiceData.PIDate)
-      .input("Supplierid", sql.BigInt, PurchaseInvoiceData.Supplierid) 
-      .input("TotalAmount", sql.BigInt, PurchaseInvoiceData.TotalAmount) 
-      .input("Discount", sql.BigInt, PurchaseInvoiceData.Discount) 
-      .input("netAmount", sql.BigInt, PurchaseInvoiceData.netAmount)  
+      .input("Supplierid", sql.BigInt, PurchaseInvoiceData.Supplierid)
+      .input("TotalAmount", sql.BigInt, PurchaseInvoiceData.TotalAmount)
+      .input("Discount", sql.BigInt, PurchaseInvoiceData.Discount)
+      .input("netAmount", sql.BigInt, PurchaseInvoiceData.netAmount)
       .input("Remarks", sql.VarChar(2000), PurchaseInvoiceData.Remarks)
       .input("ModifyBy", sql.BigInt, PurchaseInvoiceData.ModifyBy)
       .query(sqlQueries.UpdatePurchaseInvoice);
@@ -78,7 +108,9 @@ const UpdatePurchaseInvoice = async (PurchaseInvoiceID, PurchaseInvoiceData) => 
 const DeletePurchaseInvoice = async (PurchaseInvoiceID) => {
   try {
     let pool = await sql.connect(config.sql);
-    const sqlQueries = await utils.loadSqlQueries("Transactions/PurchaseInvoice");
+    const sqlQueries = await utils.loadSqlQueries(
+      "Transactions/PurchaseInvoice"
+    );
     const deleteEvent = await pool
       .request()
       .input("PurchaseInvoiceID", sql.BigInt, PurchaseInvoiceID)
@@ -91,6 +123,7 @@ const DeletePurchaseInvoice = async (PurchaseInvoiceID) => {
 
 module.exports = {
   GetAllPurchaseInvoice: GetAllPurchaseInvoice,
+  GetAllPurchaseInvoiceMIS: GetAllPurchaseInvoiceMIS,
   GetOnePurchaseInvoice: GetOnePurchaseInvoice,
   InsertPurchaseInvoice: InsertPurchaseInvoice,
   UpdatePurchaseInvoice: UpdatePurchaseInvoice,

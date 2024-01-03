@@ -9,6 +9,15 @@ const GetAllSalesInvoice = async (req, res, next) => {
   }
 };
 
+const GetAllSalesInvoiceMIS = async (req, res, next) => {
+  try {
+    const SalesInvoicelist = await SalesInvoiceData.GetAllSalesInvoiceMIS();
+    res.send(SalesInvoicelist);
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+};
+
 const GetOneSalesInvoice = async (req, res, next) => {
   try {
     const SalesInvoiceid = req.params.id;
@@ -52,6 +61,7 @@ const DeleteSalesInvoice = async (req, res, next) => {
 
 module.exports = {
   GetAllSalesInvoice: GetAllSalesInvoice,
+  GetAllSalesInvoiceMIS:GetAllSalesInvoiceMIS,
   GetOneSalesInvoice: GetOneSalesInvoice,
   InsertSalesInvoice: InsertSalesInvoice,
   UpdateSalesInvoice: UpdateSalesInvoice,

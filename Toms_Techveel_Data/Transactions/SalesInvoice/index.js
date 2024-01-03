@@ -12,7 +12,7 @@ const InsertSalesInvoice = async (SalesInvoiceData) => {
       .input("InvoiceDate", sql.SmallDateTime, SalesInvoiceData.InvoiceDate) 
       .input("PoRefNumber", sql.BigInt, SalesInvoiceData.PoRefNumber)
       .input("PoRefDate", sql.SmallDateTime, SalesInvoiceData.PoRefDate)
-      .input("Supplierid", sql.BigInt, SalesInvoiceData.Supplierid) 
+      .input("Customerid", sql.BigInt, SalesInvoiceData.Customerid) 
       .input("TotalAmount", sql.BigInt, SalesInvoiceData.TotalAmount) 
       .input("Discount", sql.BigInt, SalesInvoiceData.Discount) 
       .input("netAmount", sql.BigInt, SalesInvoiceData.netAmount)  
@@ -30,6 +30,17 @@ const GetAllSalesInvoice = async () => {
     let pool = await sql.connect(config.sql);
     const sqlQueries = await utils.loadSqlQueries("Transactions/SalesInvoice");
     const GetSalesInvoice = await pool.request().query(sqlQueries.GetAllSalesInvoice);
+    return GetSalesInvoice.recordset;
+  } catch (error) {
+    return error.message;
+  }
+};
+
+const GetAllSalesInvoiceMIS = async () => {
+  try {
+    let pool = await sql.connect(config.sql);
+    const sqlQueries = await utils.loadSqlQueries("Transactions/SalesInvoice");
+    const GetSalesInvoice = await pool.request().query(sqlQueries.GetAllSalesInvoiceMIS);
     return GetSalesInvoice.recordset;
   } catch (error) {
     return error.message;
@@ -61,7 +72,7 @@ const UpdateSalesInvoice = async (SalesInvoiceID, SalesInvoiceData) => {
       .input("InvoiceDate", sql.SmallDateTime, SalesInvoiceData.InvoiceDate) 
       .input("PoRefNumber", sql.BigInt, SalesInvoiceData.PoRefNumber)
       .input("PoRefDate", sql.SmallDateTime, SalesInvoiceData.PoRefDate)
-      .input("Supplierid", sql.BigInt, SalesInvoiceData.Supplierid) 
+      .input("Customerid", sql.BigInt, SalesInvoiceData.Customerid) 
       .input("TotalAmount", sql.BigInt, SalesInvoiceData.TotalAmount) 
       .input("Discount", sql.BigInt, SalesInvoiceData.Discount) 
       .input("netAmount", sql.BigInt, SalesInvoiceData.netAmount)  
@@ -90,6 +101,7 @@ const DeleteSalesInvoice = async (SalesInvoiceID) => {
 
 module.exports = {
   GetAllSalesInvoice: GetAllSalesInvoice,
+  GetAllSalesInvoiceMIS:GetAllSalesInvoiceMIS,
   GetOneSalesInvoice: GetOneSalesInvoice,
   InsertSalesInvoice: InsertSalesInvoice,
   UpdateSalesInvoice: UpdateSalesInvoice,

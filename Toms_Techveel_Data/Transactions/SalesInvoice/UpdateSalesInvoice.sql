@@ -5,7 +5,7 @@ set
   InvoiceDate=@InvoiceDate,
   PoRefNumber = @PoRefNumber,
   PoRefDate=@PoRefDate,
-  Supplierid=@Supplierid,
+  Customerid=@Customerid,
   TotalAmount=@TotalAmount,
   Discount=@Discount, 
   netAmount=@netAmount,
